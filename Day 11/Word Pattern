@@ -1,0 +1,6 @@
+class Solution:
+    def wordPattern(self, pattern, s):
+        w = s.split()
+        if len(pattern) != len(w):
+            return False
+        return len(set(zip(pattern, w))) == len(set(pattern)) == len(set(w))

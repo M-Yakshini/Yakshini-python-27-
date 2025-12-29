@@ -1,0 +1,13 @@
+class Solution:
+    def singleNumber(self, nums):
+        x = 0
+        for n in nums:
+            x ^= n
+        d = x & -x
+        a = b = 0
+        for n in nums:
+            if n & d:
+                a ^= n
+            else:
+                b ^= n
+        return [a, b]

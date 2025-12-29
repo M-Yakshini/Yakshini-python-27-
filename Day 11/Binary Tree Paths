@@ -1,0 +1,10 @@
+class Solution:
+    def binaryTreePaths(self, root):
+        if not root:
+            return []
+        if not root.left and not root.right:
+            return [str(root.val)]
+        paths = []
+        for p in self.binaryTreePaths(root.left) + self.binaryTreePaths(root.right):
+            paths.append(str(root.val) + "->" + p)
+        return paths

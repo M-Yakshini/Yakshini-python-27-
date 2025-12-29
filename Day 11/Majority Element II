@@ -1,0 +1,17 @@
+class Solution:
+    def majorityElement(self, nums):
+        a = b = None
+        ca = cb = 0
+        for n in nums:
+            if n == a:
+                ca += 1
+            elif n == b:
+                cb += 1
+            elif ca == 0:
+                a, ca = n, 1
+            elif cb == 0:
+                b, cb = n, 1
+            else:
+                ca -= 1
+                cb -= 1
+        return [n for n in (a, b) if nums.count(n) > len(nums) // 3]

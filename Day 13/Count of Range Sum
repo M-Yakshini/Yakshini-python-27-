@@ -1,0 +1,16 @@
+class Solution:
+    def countRangeSum(self, nums, lower, upper):
+        pre=[0]
+        for x in nums: pre.append(pre[-1]+x)
+        def ms(a):
+            if len(a)<=1: return a,0
+            m=len(a)//2
+            l,c1=ms(a[:m]); r,c2=ms(a[m:])
+            c=c1+c2
+            j=k=0
+            for x in l:
+                while j<len(r) and r[j]-x<lower: j+=1
+                while k<len(r) and r[k]-x<=upper: k+=1
+                c+=k-j
+            return sorted(l+r),c
+        return ms(pre)[1]

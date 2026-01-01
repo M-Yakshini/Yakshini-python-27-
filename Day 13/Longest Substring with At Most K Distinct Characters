@@ -1,0 +1,11 @@
+class Solution:
+    def lengthOfLongestSubstringKDistinct(self, s, k):
+        d={}; l=0; r=0
+        for i,c in enumerate(s):
+            d[c]=i
+            if len(d)>k:
+                m=min(d.values())
+                del d[s[m]]
+                l=m+1
+            r=max(r,i-l+1)
+        return r

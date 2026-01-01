@@ -1,0 +1,9 @@
+class Solution:
+    def isValidSerialization(self, preorder):
+        s=1
+        for x in preorder.split(','):
+            s-=1
+            if s<0: return False
+            if x!='#': s+=2
+        return s==0
+

@@ -1,0 +1,14 @@
+class Solution:
+    def largestBSTSubtree(self, root):
+        self.ans=0
+        def dfs(n):
+            if not n: return True,0,10**9,-10**9
+            l,ls,lm,lx=dfs(n.left)
+            r,rs,rm,rx=dfs(n.right)
+            if l and r and lm<n.val<rm:
+                s=ls+rs+1
+                self.ans=max(self.ans,s)
+                return True,s,min(lm,n.val),max(rx,n.val)
+            return False,0,0,0
+        dfs(root)
+        return self.ans

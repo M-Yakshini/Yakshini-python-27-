@@ -1,0 +1,14 @@
+class Solution:
+    def palindromePairs(self, words):
+        d={w:i for i,w in enumerate(words)}
+        r=[]
+        for i,w in enumerate(words):
+            for j in range(len(w)+1):
+                a,b=w[:j],w[j:]
+                if a==a[::-1]:
+                    t=b[::-1]
+                    if t in d and d[t]!=i: r.append([d[t],i])
+                if j and b==b[::-1]:
+                    t=a[::-1]
+                    if t in d and d[t]!=i: r.append([i,d[t]])
+        return r

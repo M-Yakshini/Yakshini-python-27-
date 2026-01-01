@@ -1,0 +1,13 @@
+class Solution:
+    def findItinerary(self, tickets):
+        from collections import defaultdict
+        g=defaultdict(list)
+        for a,b in sorted(tickets,reverse=True):
+            g[a].append(b)
+        r=[]
+        def dfs(u):
+            while g[u]:
+                dfs(g[u].pop())
+            r.append(u)
+        dfs("JFK")
+        return r[::-1]

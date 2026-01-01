@@ -1,0 +1,6 @@
+class Solution:
+    def wiggleSort(self, nums):
+        s=sorted(nums)
+        n=len(nums)
+        nums[::2]=s[:(n+1)//2][::-1]
+        nums[1::2]=s[(n+1)//2:][::-1]

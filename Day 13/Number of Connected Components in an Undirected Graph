@@ -1,0 +1,12 @@
+class Solution:
+    def countComponents(self, n, edges):
+        p=list(range(n))
+        def f(x):
+            if p[x]!=x: p[x]=f(p[x])
+            return p[x]
+        c=n
+        for u,v in edges:
+            a,b=f(u),f(v)
+            if a!=b:
+                p[a]=b; c-=1
+        return c

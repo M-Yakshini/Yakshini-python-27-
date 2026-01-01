@@ -1,0 +1,19 @@
+class Solution:
+    def maxNumber(self, nums1, nums2, k):
+        def pick(nums, k):
+            st=[]
+            d=len(nums)-k
+            for x in nums:
+                while d and st and st[-1]<x:
+                    st.pop(); d-=1
+                st.append(x)
+            return st[:k]
+        def merge(a,b):
+            r=[]
+            while a or b:
+                r.append((a>b and a or b).pop(0))
+            return r
+        ans=[]
+        for i in range(max(0,k-len(nums2)),min(k,len(nums1))+1):
+            ans=max(ans,merge(pick(nums1,i),pick(nums2,k-i)))
+        return ans

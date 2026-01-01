@@ -1,0 +1,7 @@
+class Solution:
+    def rob(self, root):
+        def dfs(n):
+            if not n: return (0,0)
+            l=dfs(n.left); r=dfs(n.right)
+            return (n.val+l[1]+r[1],max(l)+max(r))
+        return max(dfs(root))

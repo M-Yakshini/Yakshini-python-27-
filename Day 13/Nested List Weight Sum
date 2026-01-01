@@ -1,0 +1,9 @@
+class Solution:
+    def depthSum(self, nl):
+        def dfs(a,d):
+            s=0
+            for x in a:
+                if x.isInteger(): s+=x.getInteger()*d
+                else: s+=dfs(x.getList(),d+1)
+            return s
+        return dfs(nl,1)

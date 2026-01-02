@@ -1,0 +1,8 @@
+class Solution:
+    def intersect(self, nums1, nums2):
+        from collections import Counter
+        c=Counter(nums1)&Counter(nums2)
+        r=[]
+        for k,v in c.items():
+            r+=[k]*v
+        return r

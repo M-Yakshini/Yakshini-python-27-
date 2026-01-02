@@ -1,0 +1,14 @@
+class SummaryRanges:
+    def __init__(self):
+        self.s=set()
+    def addNum(self, value):
+        self.s.add(value)
+    def getIntervals(self):
+        a=sorted(self.s)
+        r=[]
+        for x in a:
+            if not r or r[-1][1]+1<x:
+                r.append([x,x])
+            else:
+                r[-1][1]=x
+        return r

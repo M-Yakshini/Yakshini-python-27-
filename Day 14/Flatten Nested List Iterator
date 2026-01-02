@@ -1,0 +1,15 @@
+class NestedIterator:
+    def __init__(self, nestedList):
+        self.a=[]
+        def f(n):
+            for x in n:
+                if x.isInteger(): self.a.append(x.getInteger())
+                else: f(x.getList())
+        f(nestedList)
+        self.i=0
+    def next(self):
+        v=self.a[self.i]
+        self.i+=1
+        return v
+    def hasNext(self):
+        return self.i<len(self.a)

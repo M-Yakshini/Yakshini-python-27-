@@ -1,0 +1,10 @@
+class Solution:
+    def maxEnvelopes(self, e):
+        import bisect
+        e.sort(key=lambda x:(x[0],-x[1]))
+        a=[]
+        for _,h in e:
+            i=bisect.bisect_left(a,h)
+            if i<len(a): a[i]=h
+            else: a.append(h)
+        return len(a)

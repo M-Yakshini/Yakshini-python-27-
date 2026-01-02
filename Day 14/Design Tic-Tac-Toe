@@ -1,0 +1,16 @@
+class TicTacToe:
+    def __init__(self, n):
+        self.r=[0]*n
+        self.c=[0]*n
+        self.d=0
+        self.a=0
+        self.n=n
+    def move(self, row, col, player):
+        x=1 if player==1 else -1
+        self.r[row]+=x
+        self.c[col]+=x
+        if row==col: self.d+=x
+        if row+col==self.n-1: self.a+=x
+        if abs(self.r[row])==self.n or abs(self.c[col])==self.n or abs(self.d)==self.n or abs(self.a)==self.n:
+            return player
+        return 0

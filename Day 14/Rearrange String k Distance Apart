@@ -1,0 +1,17 @@
+class Solution:
+    def rearrangeString(self, s, k):
+        import heapq
+        from collections import Counter,deque
+        if k==0: return s
+        h=[(-v,c) for c,v in Counter(s).items()]
+        heapq.heapify(h)
+        q=deque()
+        r=""
+        while h:
+            v,c=heapq.heappop(h)
+            r+=c
+            q.append((v+1,c))
+            if len(q)==k:
+                x=q.popleft()
+                if x[0]<0: heapq.heappush(h,x)
+        return r if len(r)==len(s) else ""

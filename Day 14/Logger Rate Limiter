@@ -1,0 +1,8 @@
+class Logger:
+    def __init__(self):
+        self.d={}
+    def shouldPrintMessage(self, t, m):
+        if m not in self.d or t-self.d[m]>=10:
+            self.d[m]=t
+            return True
+        return False

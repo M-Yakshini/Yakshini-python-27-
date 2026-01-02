@@ -1,0 +1,18 @@
+class SnakeGame:
+    def __init__(self, w, h, food):
+        self.w=w; self.h=h; self.f=food
+        self.s=[(0,0)]
+        self.d=0
+    def move(self, dir):
+        m={"U":(-1,0),"D":(1,0),"L":(0,-1),"R":(0,1)}
+        x,y=self.s[0]
+        dx,dy=m[dir]
+        nx,ny=x+dx,y+dy
+        if nx<0 or ny<0 or nx>=self.h or ny>=self.w or (nx,ny) in self.s[:-1]:
+            return -1
+        self.s.insert(0,(nx,ny))
+        if self.d<len(self.f) and [nx,ny]==self.f[self.d]:
+            self.d+=1
+        else:
+            self.s.pop()
+        return self.d

@@ -1,0 +1,18 @@
+class Twitter:
+    def __init__(self):
+        self.t=0
+        self.tw={}
+        self.f={}
+    def postTweet(self, u, t):
+        self.tw.setdefault(u,[]).append((self.t,t))
+        self.t+=1
+    def getNewsFeed(self, u):
+        r=[]
+        for x in self.f.get(u,set())|{u}:
+            r+=self.tw.get(x,[])
+        r.sort(reverse=True)
+        return [x[1] for x in r[:10]]
+    def follow(self, u, v):
+        self.f.setdefault(u,set()).add(v)
+    def unfollow(self, u, v):
+        if u in self.f: self.f[u].discard(v)

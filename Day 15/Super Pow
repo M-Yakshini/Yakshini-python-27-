@@ -1,0 +1,10 @@
+class Solution:
+    def superPow(self, a, b):
+        def mod(x):
+            r=1
+            for _ in range(10): r=r*x%1337
+            return r
+        r=1
+        for d in b:
+            r=mod(r)*pow(a,d,1337)%1337
+        return r

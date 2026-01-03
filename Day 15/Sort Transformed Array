@@ -1,0 +1,4 @@
+class Solution:
+    def sortTransformedArray(self, nums, a, b, c):
+        f=lambda x:a*x*x+b*x+c
+        return sorted(f(x) for x in nums)

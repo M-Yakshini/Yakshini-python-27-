@@ -1,0 +1,4 @@
+class Solution:
+    def canMeasureWater(self, x, y, t):
+        import math
+        return t==0 or (x+y>=t and t%math.gcd(x,y)==0)

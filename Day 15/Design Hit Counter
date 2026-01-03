@@ -1,0 +1,9 @@
+class HitCounter:
+    def __init__(self):
+        self.q=[]
+    def hit(self, t):
+        self.q.append(t)
+    def getHits(self, t):
+        while self.q and t-self.q[0]>=300:
+            self.q.pop(0)
+        return len(self.q)

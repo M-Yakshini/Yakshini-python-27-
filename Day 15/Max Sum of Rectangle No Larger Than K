@@ -1,0 +1,19 @@
+class Solution:
+    def maxSumSubmatrix(self, matrix, k):
+        import bisect
+        m,n=len(matrix),len(matrix[0])
+        ans=-10**9
+        for l in range(n):
+            s=[0]*m
+            for r in range(l,n):
+                for i in range(m):
+                    s[i]+=matrix[i][r]
+                a=[0]
+                cur=0
+                for x in s:
+                    cur+=x
+                    i=bisect.bisect_left(a,cur-k)
+                    if i<len(a):
+                        ans=max(ans,cur-a[i])
+                    bisect.insort(a,cur)
+        return ans

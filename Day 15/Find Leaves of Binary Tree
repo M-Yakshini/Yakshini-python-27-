@@ -1,0 +1,11 @@
+class Solution:
+    def findLeaves(self, root):
+        r=[]
+        def dfs(n):
+            if not n: return -1
+            h=1+max(dfs(n.left),dfs(n.right))
+            if h==len(r): r.append([])
+            r[h].append(n.val)
+            return h
+        dfs(root)
+        return r

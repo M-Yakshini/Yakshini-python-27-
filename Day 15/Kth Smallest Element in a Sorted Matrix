@@ -1,0 +1,10 @@
+class Solution:
+    def kthSmallest(self, m, k):
+        import heapq
+        h=[(m[i][0],i,0) for i in range(len(m))]
+        heapq.heapify(h)
+        for _ in range(k-1):
+            v,i,j=heapq.heappop(h)
+            if j+1<len(m[0]):
+                heapq.heappush(h,(m[i][j+1],i,j+1))
+        return heapq.heappop(h)[0]

@@ -1,0 +1,9 @@
+class PhoneDirectory:
+    def __init__(self, n):
+        self.a=set(range(n))
+    def get(self):
+        return self.a.pop() if self.a else -1
+    def check(self, n):
+        return n in self.a
+    def release(self, n):
+        self.a.add(n)

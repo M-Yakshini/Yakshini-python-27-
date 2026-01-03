@@ -1,0 +1,17 @@
+class Solution:
+    def kSmallestPairs(self, a, b, k):
+        import heapq
+        if not a or not b: return []
+        h=[(a[0]+b[0],0,0)]
+        v=set((0,0))
+        r=[]
+        while h and len(r)<k:
+            _,i,j=heapq.heappop(h)
+            r.append([a[i],b[j]])
+            if i+1<len(a) and (i+1,j) not in v:
+                heapq.heappush(h,(a[i+1]+b[j],i+1,j))
+                v.add((i+1,j))
+            if j+1<len(b) and (i,j+1) not in v:
+                heapq.heappush(h,(a[i]+b[j+1],i,j+1))
+                v.add((i,j+1))
+        return r

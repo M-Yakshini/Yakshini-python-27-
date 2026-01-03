@@ -1,0 +1,10 @@
+class Solution:
+    def depthSumInverse(self, nl):
+        lvl=[]
+        def dfs(a,d):
+            if len(lvl)<d: lvl.append(0)
+            for x in a:
+                if x.isInteger(): lvl[d-1]+=x.getInteger()
+                else: dfs(x.getList(),d+1)
+        dfs(nl,1)
+        return sum(v*(len(lvl)-i) for i,v in enumerate(lvl))

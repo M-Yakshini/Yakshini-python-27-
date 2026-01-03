@@ -1,0 +1,21 @@
+class RandomizedSet:
+    def __init__(self):
+        self.a=[]
+        self.d={}
+    def insert(self, v):
+        if v in self.d: return False
+        self.d[v]=len(self.a)
+        self.a.append(v)
+        return True
+    def remove(self, v):
+        if v not in self.d: return False
+        i=self.d[v]
+        x=self.a[-1]
+        self.a[i]=x
+        self.d[x]=i
+        self.a.pop()
+        del self.d[v]
+        return True
+    def getRandom(self):
+        import random
+        return random.choice(self.a)

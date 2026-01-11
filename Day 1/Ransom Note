@@ -1,0 +1,4 @@
+class Solution:
+    def canConstruct(self, r, m):
+        from collections import Counter
+        return not (Counter(r)-Counter(m))

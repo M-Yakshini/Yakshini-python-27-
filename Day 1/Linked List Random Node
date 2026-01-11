@@ -1,0 +1,14 @@
+class Solution:
+    def __init__(self, head):
+        self.h=head
+    def getRandom(self):
+        import random
+        r=self.h.val
+        n=1
+        c=self.h.next
+        while c:
+            n+=1
+            if random.randrange(n)==0:
+                r=c.val
+            c=c.next
+        return r

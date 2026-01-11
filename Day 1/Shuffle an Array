@@ -1,0 +1,11 @@
+class Solution:
+    def __init__(self, nums):
+        self.a=nums[:]
+        self.b=nums[:]
+    def reset(self):
+        self.a=self.b[:]
+        return self.a
+    def shuffle(self):
+        import random
+        random.shuffle(self.a)
+        return self.a

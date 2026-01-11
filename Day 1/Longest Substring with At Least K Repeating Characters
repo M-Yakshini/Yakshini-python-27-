@@ -1,0 +1,9 @@
+class Solution:
+    def longestSubstring(self, s, k):
+        from collections import Counter
+        if not s: return 0
+        c=Counter(s)
+        for x in c:
+            if c[x]<k:
+                return max(self.longestSubstring(t,k) for t in s.split(x))
+        return len(s)

@@ -1,0 +1,10 @@
+class Solution:
+    def findNthDigit(self, n):
+        d=1; c=9; s=1
+        while n>d*c:
+            n-=d*c
+            d+=1
+            c*=10
+            s*=10
+        num=s+(n-1)//d
+        return int(str(num)[(n-1)%d])

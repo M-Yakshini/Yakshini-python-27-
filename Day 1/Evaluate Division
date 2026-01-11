@@ -1,0 +1,24 @@
+class Solution:
+    def calcEquation(self, eq, val, q):
+        from collections import defaultdict,deque
+        g=defaultdict(list)
+        for (a,b),v in zip(eq,val):
+            g[a].append((b,v))
+            g[b].append((a,1/v))
+        r=[]
+        for a,b in q:
+            if a not in g or b not in g:
+                r.append(-1.0); continue
+            qd=deque([(a,1.0)])
+            seen={a}
+            ans=-1.0
+            while qd:
+                x,v=qd.popleft()
+                if x==b:
+                    ans=v; break
+                for y,w in g[x]:
+                    if y not in seen:
+                        seen.add(y)
+                        qd.append((y,v*w))
+            r.append(ans)
+        return r

@@ -1,0 +1,10 @@
+class Solution:
+    def lastRemaining(self, n):
+        h=1; step=1; l=True
+        while n>1:
+            if l or n%2:
+                h+=step
+            step*=2
+            n//=2
+            l=not l
+        return h

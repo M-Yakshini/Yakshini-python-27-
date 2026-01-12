@@ -1,0 +1,9 @@
+class Solution:
+    def longestPalindrome(self, s):
+        from collections import Counter
+        c=Counter(s)
+        r=0; o=0
+        for v in c.values():
+            r+=v//2*2
+            if v%2: o=1
+        return r+o

@@ -1,0 +1,6 @@
+class Solution:
+    def thirdMax(self, a):
+        s=set(a)
+        if len(s)<3: return max(s)
+        s.remove(max(s)); s.remove(max(s))
+        return max(s)

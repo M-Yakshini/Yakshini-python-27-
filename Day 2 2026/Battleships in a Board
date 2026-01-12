@@ -1,0 +1,9 @@
+class Solution:
+    def countBattleships(self, b):
+        m,n=len(b),len(b[0])
+        r=0
+        for i in range(m):
+            for j in range(n):
+                if b[i][j]=='X' and (i==0 or b[i-1][j]=='.') and (j==0 or b[i][j-1]=='.'):
+                    r+=1
+        return r

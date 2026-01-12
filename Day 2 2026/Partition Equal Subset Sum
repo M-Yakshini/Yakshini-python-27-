@@ -1,0 +1,9 @@
+class Solution:
+    def canPartition(self, a):
+        s=sum(a)
+        if s%2: return False
+        t=s//2
+        dp={0}
+        for x in a:
+            dp|={y+x for y in dp if y+x<=t}
+        return t in dp

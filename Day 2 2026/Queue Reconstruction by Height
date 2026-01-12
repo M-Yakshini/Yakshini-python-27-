@@ -1,0 +1,7 @@
+class Solution:
+    def reconstructQueue(self, p):
+        p.sort(key=lambda x:(-x[0],x[1]))
+        r=[]
+        for x in p:
+            r.insert(x[1],x)
+        return r

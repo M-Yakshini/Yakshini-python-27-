@@ -1,0 +1,12 @@
+class Solution:
+    def canCross(self, s):
+        from collections import defaultdict
+        d=defaultdict(set)
+        d[0].add(0)
+        S=set(s)
+        for x in s:
+            for k in d[x]:
+                for nk in (k-1,k,k+1):
+                    if nk>0 and x+nk in S:
+                        d[x+nk].add(nk)
+        return bool(d[s[-1]])

@@ -1,0 +1,9 @@
+class Solution:
+    def toHex(self, n):
+        if n==0: return "0"
+        if n<0: n+=2**32
+        h="0123456789abcdef"; r=""
+        while n:
+            r=h[n%16]+r
+            n//=16
+        return r

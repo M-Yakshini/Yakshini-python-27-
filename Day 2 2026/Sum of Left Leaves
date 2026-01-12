@@ -1,0 +1,7 @@
+class Solution:
+    def sumOfLeftLeaves(self, r):
+        if not r: return 0
+        s=0
+        if r.left and not r.left.left and not r.left.right:
+            s+=r.left.val
+        return s+self.sumOfLeftLeaves(r.left)+self.sumOfLeftLeaves(r.right)

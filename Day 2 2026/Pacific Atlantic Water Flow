@@ -1,0 +1,15 @@
+class Solution:
+    def pacificAtlantic(self, h):
+        m,n=len(h),len(h[0])
+        p=set(); a=set()
+        def dfs(i,j,vis):
+            vis.add((i,j))
+            for di,dj in [(1,0),(-1,0),(0,1),(0,-1)]:
+                ni,nj=i+di,j+dj
+                if 0<=ni<m and 0<=nj<n and (ni,nj) not in vis and h[ni][nj]>=h[i][j]:
+                    dfs(ni,nj,vis)
+        for i in range(m):
+            dfs(i,0,p); dfs(i,n-1,a)
+        for j in range(n):
+            dfs(0,j,p); dfs(m-1,j,a)
+        return list(p&a)

@@ -1,0 +1,24 @@
+class Solution:
+    def trapRainWater(self, h):
+        import heapq
+        m=len(h)
+        if not m: return 0
+        n=len(h[0])
+        v=[[0]*n for _ in range(m)]
+        q=[]
+        for i in range(m):
+            for j in [0,n-1]:
+                heapq.heappush(q,(h[i][j],i,j)); v[i][j]=1
+        for j in range(n):
+            for i in [0,m-1]:
+                heapq.heappush(q,(h[i][j],i,j)); v[i][j]=1
+        r=0
+        while q:
+            x,i,j=heapq.heappop(q)
+            for di,dj in [(1,0),(-1,0),(0,1),(0,-1)]:
+                ni,nj=i+di,j+dj
+                if 0<=ni<m and 0<=nj<n and not v[ni][nj]:
+                    v[ni][nj]=1
+                    r+=max(0,x-h[ni][nj])
+                    heapq.heappush(q,(max(x,h[ni][nj]),ni,nj))
+        return r

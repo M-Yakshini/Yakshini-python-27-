@@ -1,0 +1,12 @@
+class Solution:
+    def parseTernary(self, e):
+        st=[]
+        for c in e[::-1]:
+            if st and st[-1]=='?':
+                st.pop()
+                a=st.pop(); st.pop()
+                b=st.pop()
+                st.append(a if c=='T' else b)
+            else:
+                st.append(c)
+        return st[0]

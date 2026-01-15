@@ -1,0 +1,10 @@
+class Solution:
+    def originalDigits(self, s):
+        from collections import Counter
+        c=Counter(s)
+        r=[0]*10
+        r[0]=c['z']; r[2]=c['w']; r[4]=c['u']; r[6]=c['x']; r[8]=c['g']
+        r[3]=c['h']-r[8]; r[5]=c['f']-r[4]; r[7]=c['s']-r[6]
+        r[1]=c['o']-r[0]-r[2]-r[4]
+        r[9]=c['i']-r[5]-r[6]-r[8]
+        return ''.join(str(i)*r[i] for i in range(10))

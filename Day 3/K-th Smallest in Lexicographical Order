@@ -1,0 +1,16 @@
+class Solution:
+    def findKthNumber(self, n, k):
+        def cnt(p,n):
+            c=0; a=p; b=p+1
+            while a<=n:
+                c+=min(n+1,b)-a
+                a*=10; b*=10
+            return c
+        cur=1; k-=1
+        while k:
+            c=cnt(cur,n)
+            if c<=k:
+                k-=c; cur+=1
+            else:
+                cur*=10; k-=1
+        return cur

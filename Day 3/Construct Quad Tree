@@ -1,0 +1,12 @@
+class Solution:
+    def construct(self, g):
+        n=len(g)
+        def f(x,y,s):
+            v=g[x][y]
+            for i in range(x,x+s):
+                for j in range(y,y+s):
+                    if g[i][j]!=v:
+                        h=s//2
+                        return Node(1,0,f(x,y,h),f(x,y+h,h),f(x+h,y,h),f(x+h,y+h,h))
+            return Node(v,1,None,None,None,None)
+        return f(0,0,n)

@@ -1,0 +1,18 @@
+class Solution:
+    def flatten(self, h):
+        def dfs(x):
+            c=x; t=x
+            while c:
+                n=c.next
+                if c.child:
+                    ch,ct=dfs(c.child)
+                    c.child=None
+                    c.next=ch; ch.prev=c
+                    if n:
+                        ct.next=n; n.prev=ct
+                    t=ct
+                else:
+                    t=c
+                c=n
+            return x,t
+        return dfs(h)[0] if h else h

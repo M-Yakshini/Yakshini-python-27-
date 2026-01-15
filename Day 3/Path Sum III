@@ -1,0 +1,13 @@
+class Solution:
+    def pathSum(self, r, t):
+        from collections import defaultdict
+        d=defaultdict(int); d[0]=1
+        def dfs(x,s):
+            if not x: return 0
+            s+=x.val
+            r=d[s-t]
+            d[s]+=1
+            r+=dfs(x.left,s)+dfs(x.right,s)
+            d[s]-=1
+            return r
+        return dfs(r,0)

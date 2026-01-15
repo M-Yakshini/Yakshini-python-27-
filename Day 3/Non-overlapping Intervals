@@ -1,0 +1,10 @@
+class Solution:
+    def eraseOverlapIntervals(self, i):
+        i.sort(key=lambda x:x[1])
+        r=0; e=-10**18
+        for s,t in i:
+            if s>=e:
+                e=t
+            else:
+                r+=1
+        return r

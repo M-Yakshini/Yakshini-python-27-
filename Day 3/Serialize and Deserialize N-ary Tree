@@ -1,0 +1,20 @@
+class Codec:
+    def serialize(self, r):
+        if not r: return ""
+        s=[str(r.val)]
+        for c in r.children:
+            s.append(self.serialize(c))
+        s.append("#")
+        return ",".join(s)
+    def deserialize(self, d):
+        if not d: return None
+        it=iter(d.split(","))
+        def f():
+            v=next(it)
+            n=Node(int(v),[])
+            while True:
+                x=next(it)
+                if x=="#": break
+                n.children.append(f())
+            return n
+        return f()

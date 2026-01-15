@@ -1,0 +1,12 @@
+class AllOne:
+    def __init__(self):
+        self.d={}
+    def inc(self,k):
+        self.d[k]=self.d.get(k,0)+1
+    def dec(self,k):
+        if self.d[k]==1: del self.d[k]
+        else: self.d[k]-=1
+    def getMaxKey(self):
+        return max(self.d,key=self.d.get) if self.d else ""
+    def getMinKey(self):
+        return min(self.d,key=self.d.get) if self.d else ""

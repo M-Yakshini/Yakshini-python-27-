@@ -1,0 +1,18 @@
+class Solution:
+    def wordSquares(self, words):
+        from collections import defaultdict
+        n=len(words[0])
+        p=defaultdict(list)
+        for w in words:
+            for i in range(n):
+                p[w[:i]].append(w)
+        r=[]
+        def bt(s):
+            if len(s)==n:
+                r.append(s[:]); return
+            k=''.join(w[len(s)] for w in s)
+            for w in p[k]:
+                bt(s+[w])
+        for w in words:
+            bt([w])
+        return r

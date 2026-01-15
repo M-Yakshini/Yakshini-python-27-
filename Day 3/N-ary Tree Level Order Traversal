@@ -1,0 +1,11 @@
+class Solution:
+    def levelOrder(self, r):
+        if not r: return []
+        q=[r]; res=[]
+        while q:
+            nq=[]; lvl=[]
+            for x in q:
+                lvl.append(x.val)
+                nq+=x.children
+            res.append(lvl); q=nq
+        return res

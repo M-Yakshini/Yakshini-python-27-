@@ -1,0 +1,17 @@
+class Solution:
+    def treeToDoublyList(self, r):
+        if not r: return None
+        f=l=None
+        def dfs(x):
+            nonlocal f,l
+            if not x: return
+            dfs(x.left)
+            if l:
+                l.right=x; x.left=l
+            else:
+                f=x
+            l=x
+            dfs(x.right)
+        dfs(r)
+        f.left=l; l.right=f
+        return f
